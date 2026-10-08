@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   Braces,
   Check,
-  ChevronDown,
   Clock3,
   Code2,
   Cpu,
@@ -40,7 +39,6 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
 } from "@/components/ui/select";
 import {
   Tooltip,
@@ -199,12 +197,9 @@ export function QuestionCard({
                   }
                 >
                   <SelectTrigger
-                    className="h-7 w-8 border-transparent bg-transparent px-1 shadow-none hover:bg-muted focus:ring-1"
+                    className="size-8 shrink-0 justify-center border-transparent bg-transparent p-0 shadow-none hover:bg-muted focus:ring-1"
                     aria-label="Quick change status"
-                  >
-                    <ChevronDown className="size-3.5 text-muted-foreground" />
-                    <SelectValue className="sr-only" />
-                  </SelectTrigger>
+                  />
                   <SelectContent align="end">
                     {(["Pending", "In Progress", "Completed"] as const).map(
                       (status) => (
