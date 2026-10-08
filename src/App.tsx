@@ -77,7 +77,7 @@ export default function App() {
           onMobileOpenChange={setMobileOpen}
           name={name}
         />
-        <div className="min-h-screen lg:pl-[250px]">
+        <div className="min-h-screen lg:pl-62.5">
           <Header
             view={view}
             name={name}

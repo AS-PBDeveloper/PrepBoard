@@ -99,7 +99,7 @@ export function QuestionCard({
           <div
             className={`mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-xl ${categoryTone[question.category]}`}
           >
-            <Icon className="size-[18px]" />
+            <Icon className="size-4.5" />
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-3">
@@ -121,7 +121,7 @@ export function QuestionCard({
                         className="-mr-2 -mt-2 size-8 shrink-0 text-muted-foreground opacity-70 hover:text-foreground md:opacity-0 md:group-hover:opacity-100 md:focus:opacity-100"
                         aria-label={`Actions for ${question.title}`}
                       >
-                        <MoreHorizontal className="size-[18px]" />
+                        <MoreHorizontal className="size-4.5" />
                       </Button>
                     </DropdownMenuTrigger>
                   </TooltipTrigger>

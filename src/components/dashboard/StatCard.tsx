@@ -41,7 +41,7 @@ export function StatCard({
           <div
             className={`flex size-9 shrink-0 items-center justify-center rounded-xl ${iconTone}`}
           >
-            <Icon className="size-[17px]" strokeWidth={1.8} />
+            <Icon className="size-4.25" strokeWidth={1.8} />
           </div>
         </div>
         <div className="mt-3 flex items-center gap-1.5 border-t border-border/70 pt-3 text-[11px] leading-4 text-muted-foreground">

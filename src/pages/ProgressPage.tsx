@@ -74,7 +74,7 @@ export function ProgressPage({ questions, stats }: Props) {
   );
 
   return (
-    <div className="mx-auto max-w-[1330px] animate-appear space-y-7 px-4 py-7 sm:px-7 sm:py-9 lg:px-10 lg:py-10">
+    <div className="mx-auto max-w-332.5 animate-appear space-y-7 px-4 py-7 sm:px-7 sm:py-9 lg:px-10 lg:py-10">
       <div>
         <div className="mb-2 flex items-center gap-2 text-[11px] font-medium text-muted-foreground">
           <CalendarDays className="size-3.5" />
@@ -131,7 +131,7 @@ export function ProgressPage({ questions, stats }: Props) {
                         <div className="flex w-full flex-1 items-end justify-center">
                           <div
                             title={`${completed} completed`}
-                            className={`relative w-full max-w-[58px] rounded-t-lg transition-all ${completed ? "bg-primary/75 hover:bg-primary" : "bg-secondary"} ${isToday ? "ring-2 ring-primary/15 ring-offset-2" : ""}`}
+                            className={`relative w-full max-w-14.5 rounded-t-lg transition-all ${completed ? "bg-primary/75 hover:bg-primary" : "bg-secondary"} ${isToday ? "ring-2 ring-primary/15 ring-offset-2" : ""}`}
                             style={{ height: `${height}%`, minHeight: 5 }}
                           >
                             <span

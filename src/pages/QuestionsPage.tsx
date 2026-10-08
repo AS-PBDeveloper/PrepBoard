@@ -24,7 +24,7 @@ export function QuestionsPage({
     (question) => question.status === "Pending",
   ).length;
   return (
-    <div className="mx-auto max-w-[1330px] animate-appear space-y-6 px-4 py-7 sm:px-7 sm:py-9 lg:px-10 lg:py-10">
+    <div className="mx-auto max-w-332.5 animate-appear space-y-6 px-4 py-7 sm:px-7 sm:py-9 lg:px-10 lg:py-10">
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
         <div>
           <div className="mb-2 flex items-center gap-2 text-[11px] font-medium text-muted-foreground">

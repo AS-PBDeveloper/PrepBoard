@@ -101,7 +101,7 @@ export function QuestionDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="gap-6 sm:max-w-[500px]">
+      <DialogContent className="gap-6 sm:max-w-125">
         <DialogHeader>
           <div className="mb-1 flex size-10 items-center justify-center rounded-xl bg-accent text-primary">
             <span className="text-lg">✦</span>

@@ -33,7 +33,7 @@ export function Header({
     day: "numeric",
   });
   return (
-    <header className="sticky top-0 z-20 flex h-[66px] items-center justify-between border-b border-border bg-[#f7f8f7]/90 px-4 backdrop-blur-xl sm:px-7 lg:px-10">
+    <header className="sticky top-0 z-20 flex h-16.5 items-center justify-between border-b border-border bg-[#f7f8f7]/90 px-4 backdrop-blur-xl sm:px-7 lg:px-10">
       <div className="flex items-center gap-3">
         <button
           type="button"
@@ -41,7 +41,7 @@ export function Header({
           className="flex size-9 items-center justify-center rounded-lg border border-border bg-card text-foreground lg:hidden"
           aria-label="Open navigation"
         >
-          <Menu className="size-[18px]" />
+          <Menu className="size-4.5" />
         </button>
         <div className="lg:hidden">
           <AppBrand small />
@@ -74,7 +74,7 @@ export function Header({
                 })
               }
             >
-              <Bell className="size-[17px]" />
+              <Bell className="size-4.25" />
               <span className="absolute right-2 top-2 size-1.5 rounded-full bg-primary ring-2 ring-[#f7f8f7]" />
             </Button>
           </TooltipTrigger>
@@ -82,7 +82,7 @@ export function Header({
         </Tooltip>
         <div className="hidden h-5 w-px bg-border sm:block" />
         <div className="flex items-center gap-2">
-          <div className="hidden max-w-[130px] truncate text-xs font-medium sm:block">
+          <div className="hidden max-w-32.5 truncate text-xs font-medium sm:block">
             {name}
           </div>
           <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#e7efe9] text-[10px] font-bold text-[#4e715d]">

@@ -33,7 +33,7 @@ function Brand({ small = false }: { small?: boolean }) {
       <div
         className={`relative flex ${small ? "size-8" : "size-9"} items-center justify-center rounded-xl bg-primary text-white shadow-sm`}
       >
-        <CheckCheck className="size-[18px]" strokeWidth={2.3} />
+        <CheckCheck className="size-4.5" strokeWidth={2.3} />
         <span className="absolute -bottom-0.5 -right-0.5 size-2 rounded-full border-2 border-card bg-[#bfdcc8]" />
       </div>
       <div className="leading-none">
@@ -83,7 +83,7 @@ function Navigation({
           >
             <Icon
               className={cn(
-                "size-[17px]",
+                "size-4.25",
                 view === value
                   ? "text-primary"
                   : "text-muted-foreground group-hover:text-foreground",
@@ -110,7 +110,7 @@ function Navigation({
           )}
         >
           <Settings2
-            className="size-[17px] text-muted-foreground"
+            className="size-4.25 text-muted-foreground"
             strokeWidth={1.8}
           />
           Preferences
@@ -172,8 +172,8 @@ export function AppSidebar({
 }) {
   return (
     <>
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-[250px] flex-col border-r border-border bg-card lg:flex">
-        <div className="flex h-[66px] items-center border-b border-border/80 px-5">
+      <aside className="fixed inset-y-0 left-0 z-30 hidden w-62.5 flex-col border-r border-border bg-card lg:flex">
+        <div className="flex h-16.5 items-center border-b border-border/80 px-5">
           <Brand />
         </div>
         <Navigation
@@ -211,7 +211,7 @@ export function AppSidebar({
       <div className="lg:hidden">
         <Sheet open={mobileOpen} onOpenChange={onMobileOpenChange}>
           <SheetContent side="left" className="border-r p-0">
-            <SheetHeader className="border-b border-border px-5 py-[18px]">
+            <SheetHeader className="border-b border-border px-5 py-4.5">
               <SheetTitle>
                 <Brand />
               </SheetTitle>
@@ -254,7 +254,7 @@ export function MobileNavigationTrigger({ onClick }: { onClick: () => void }) {
       className="flex size-9 items-center justify-center rounded-lg border border-border bg-card text-foreground lg:hidden"
       aria-label="Open navigation"
     >
-      <LayoutDashboard className="size-[18px]" />
+      <LayoutDashboard className="size-4.5" />
     </button>
   );
 }

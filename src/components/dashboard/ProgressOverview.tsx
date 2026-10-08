@@ -71,14 +71,14 @@ export function ProgressOverview({
         <CardContent>
           <div className="flex items-center gap-5 pb-5 pt-1">
             <div
-              className="relative flex size-[74px] shrink-0 items-center justify-center rounded-full"
+              className="relative flex size-18.5 shrink-0 items-center justify-center rounded-full"
               style={{
                 background: `conic-gradient(#18765c ${progress * 3.6}deg, #eef2ef ${progress * 3.6}deg)`,
               }}
               role="img"
               aria-label={`${progress}% overall completion`}
             >
-              <div className="flex size-[58px] items-center justify-center rounded-full bg-white">
+              <div className="flex size-14.5 items-center justify-center rounded-full bg-white">
                 <span className="font-mono text-[17px] font-semibold tracking-tight">
                   {progress}%
                 </span>
@@ -88,7 +88,7 @@ export function ProgressOverview({
               <div className="text-sm font-semibold">
                 {completed} of {total} completed
               </div>
-              <p className="mt-1 max-w-[230px] text-xs leading-5 text-muted-foreground">
+              <p className="mt-1 max-w-57.5 text-xs leading-5 text-muted-foreground">
                 Steady practice beats last-minute cramming. You’re building good
                 momentum.
               </p>

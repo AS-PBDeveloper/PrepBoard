@@ -52,7 +52,7 @@ export function SettingsPage({
     });
   };
   return (
-    <div className="mx-auto max-w-[920px] animate-appear space-y-7 px-4 py-7 sm:px-7 sm:py-9 lg:px-10 lg:py-10">
+    <div className="mx-auto max-w-230 animate-appear space-y-7 px-4 py-7 sm:px-7 sm:py-9 lg:px-10 lg:py-10">
       <div>
         <div className="mb-2 text-[11px] font-medium text-muted-foreground">
           YOUR WORKSPACE
@@ -67,7 +67,7 @@ export function SettingsPage({
       <Card>
         <CardHeader className="flex-row items-center gap-3 space-y-0">
           <div className="flex size-9 items-center justify-center rounded-xl bg-accent text-primary">
-            <UserRound className="size-[18px]" />
+            <UserRound className="size-4.5" />
           </div>
           <div>
             <CardTitle className="text-base">Your profile</CardTitle>
@@ -99,7 +99,7 @@ export function SettingsPage({
       <Card>
         <CardHeader className="flex-row items-center gap-3 space-y-0">
           <div className="flex size-9 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700">
-            <ShieldCheck className="size-[18px]" />
+            <ShieldCheck className="size-4.5" />
           </div>
           <div>
             <CardTitle className="text-base">Private by design</CardTitle>

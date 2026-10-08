@@ -99,7 +99,7 @@ export function QuestionLibrary({
               </div>
               <div className="no-scrollbar flex gap-2 overflow-x-auto">
                 <Select value={category} onValueChange={setCategory}>
-                  <SelectTrigger className="h-10 min-w-[132px] bg-card">
+                  <SelectTrigger className="h-10 min-w-33 bg-card">
                     <SlidersHorizontal className="size-3.5 text-muted-foreground" />
                     <SelectValue placeholder="Category" />
                   </SelectTrigger>
@@ -113,7 +113,7 @@ export function QuestionLibrary({
                   </SelectContent>
                 </Select>
                 <Select value={status} onValueChange={setStatus}>
-                  <SelectTrigger className="h-10 min-w-[126px] bg-card">
+                  <SelectTrigger className="h-10 min-w-31.5 bg-card">
                     <SelectValue placeholder="Status" />
                   </SelectTrigger>
                   <SelectContent>
@@ -124,7 +124,7 @@ export function QuestionLibrary({
                   </SelectContent>
                 </Select>
                 <Select value={difficulty} onValueChange={setDifficulty}>
-                  <SelectTrigger className="h-10 min-w-[122px] bg-card">
+                  <SelectTrigger className="h-10 min-w-30.5 bg-card">
                     <SelectValue placeholder="Difficulty" />
                   </SelectTrigger>
                   <SelectContent>
@@ -142,7 +142,7 @@ export function QuestionLibrary({
       {compact && (
         <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1">
           <Select value={category} onValueChange={setCategory}>
-            <SelectTrigger className="h-9 min-w-[126px] bg-card">
+            <SelectTrigger className="h-9 min-w-31.5 bg-card">
               <SelectValue placeholder="Category" />
             </SelectTrigger>
             <SelectContent>
@@ -155,7 +155,7 @@ export function QuestionLibrary({
             </SelectContent>
           </Select>
           <Select value={status} onValueChange={setStatus}>
-            <SelectTrigger className="h-9 min-w-[122px] bg-card">
+            <SelectTrigger className="h-9 min-w-30.5 bg-card">
               <SelectValue placeholder="Status" />
             </SelectTrigger>
             <SelectContent>
@@ -166,7 +166,7 @@ export function QuestionLibrary({
             </SelectContent>
           </Select>
           <Select value={difficulty} onValueChange={setDifficulty}>
-            <SelectTrigger className="h-9 min-w-[112px] bg-card">
+            <SelectTrigger className="h-9 min-w-28 bg-card">
               <SelectValue placeholder="Level" />
             </SelectTrigger>
             <SelectContent>
