@@ -40,8 +40,41 @@ const questionSchema = z.object({
   description: z
     .string()
     .trim()
-    .max(240, "Keep the note under 240 characters.")
+    .max(1000, "Keep notes under 1,000 characters.")
     .default(""),
+  tags: z
+    .string()
+    .max(200, "Keep tags under 200 characters.")
+    .superRefine((value, context) => {
+      const tags = value
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter(Boolean);
+      if (tags.length > 8) {
+        context.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Add no more than 8 tags.",
+        });
+      }
+      if (tags.some((tag) => tag.length > 24)) {
+        context.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: "Each tag must be 24 characters or fewer.",
+        });
+      }
+    })
+    .transform((value) => {
+      const seen = new Set<string>();
+      return value
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter((tag) => {
+          const key = tag.toLowerCase();
+          if (!tag || seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+    }),
 });
 
 interface QuestionDialogProps {
@@ -69,6 +102,7 @@ export function QuestionDialog({
       difficulty: "Medium",
       status: "Pending",
       description: "",
+      tags: "",
     },
   });
 
@@ -82,6 +116,7 @@ export function QuestionDialog({
             difficulty: question.difficulty,
             status: question.status,
             description: question.description,
+            tags: question.tags.join(", "),
           }
         : {
             title: "",
@@ -89,6 +124,7 @@ export function QuestionDialog({
             difficulty: "Medium",
             status: "Pending",
             description: "",
+            tags: "",
           },
     );
   }, [form, open, question]);
@@ -201,6 +237,21 @@ export function QuestionDialog({
               </FormItem>
             </div>
             <FormItem>
+              <FormLabel htmlFor="question-tags">
+                Tags{" "}
+                <span className="font-normal text-muted-foreground">
+                  (optional, comma-separated)
+                </span>
+              </FormLabel>
+              <Input
+                id="question-tags"
+                placeholder="e.g. revision, weak area, company-specific"
+                aria-invalid={!!form.formState.errors.tags}
+                {...form.register("tags")}
+              />
+              <FormMessage>{form.formState.errors.tags?.message}</FormMessage>
+            </FormItem>
+            <FormItem>
               <FormLabel htmlFor="question-description">
                 Notes{" "}
                 <span className="font-normal text-muted-foreground">
@@ -209,9 +260,9 @@ export function QuestionDialog({
               </FormLabel>
               <textarea
                 id="question-description"
-                rows={3}
-                maxLength={240}
-                placeholder="Add an approach, reminder, or resource…"
+                rows={4}
+                maxLength={1000}
+                placeholder="Record your approach, attempts, blockers, or follow-up…"
                 className="flex min-h-24 w-full resize-y rounded-lg border border-input bg-background px-3 py-2.5 text-sm outline-none transition placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring"
                 {...form.register("description")}
               />

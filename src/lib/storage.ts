@@ -10,7 +10,7 @@ const daysAgo = (days: number) => {
 
 export function createSeedQuestions(): Question[] {
   const items: Array<
-    Omit<Question, "id" | "createdAt" | "updatedAt"> & {
+    Omit<Question, "id" | "createdAt" | "updatedAt" | "tags"> & {
       updatedDaysAgo: number;
     }
   > = [
@@ -148,6 +148,7 @@ export function createSeedQuestions(): Question[] {
   ];
   return items.map(({ updatedDaysAgo, ...question }, index) => ({
     ...question,
+    tags: [],
     id: `sample-${index + 1}`,
     createdAt: daysAgo(updatedDaysAgo + 4),
     updatedAt: daysAgo(updatedDaysAgo),
@@ -164,7 +165,12 @@ export function readQuestions(): Question[] {
   }
   try {
     const parsed: unknown = JSON.parse(raw);
-    if (Array.isArray(parsed) && parsed.every(isQuestion)) return parsed;
+    if (Array.isArray(parsed) && parsed.every(isQuestion)) {
+      return parsed.map((question) => ({
+        ...question,
+        tags: question.tags ?? [],
+      }));
+    }
     return createSeedQuestions();
   } catch {
     return createSeedQuestions();
@@ -188,6 +194,14 @@ function isQuestion(value: unknown): value is Question {
     typeof item.title === "string" &&
     item.title.trim().length > 0 &&
     typeof item.description === "string" &&
+    (item.tags === undefined ||
+      (Array.isArray(item.tags) &&
+        item.tags.every(
+          (tag) =>
+            typeof tag === "string" &&
+            tag.trim().length > 0 &&
+            tag.length <= 24,
+        ))) &&
     categories.includes(item.category as (typeof categories)[number]) &&
     ["Easy", "Medium", "Hard"].includes(item.difficulty ?? "") &&
     ["Pending", "In Progress", "Completed"].includes(item.status ?? "") &&

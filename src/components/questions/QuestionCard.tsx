@@ -175,6 +175,19 @@ export function QuestionCard({
                 Updated {date}
               </span>
             </div>
+            {question.tags.length > 0 && (
+              <div className="mt-2 flex flex-wrap gap-1.5" aria-label="Tags">
+                {question.tags.map((tag) => (
+                  <Badge
+                    key={tag}
+                    variant="secondary"
+                    className="rounded-full px-2 py-0.5 text-[10px] font-medium"
+                  >
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            )}
             <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-border/70 pt-3">
               <span className="inline-flex items-center gap-1.5 text-[11px] text-muted-foreground sm:hidden">
                 <Clock3 className="size-3" />

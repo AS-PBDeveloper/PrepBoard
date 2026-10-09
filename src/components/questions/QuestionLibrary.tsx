@@ -47,9 +47,12 @@ export function QuestionLibrary({
       .filter((question) => {
         const matchesSearch =
           !term ||
-          [question.title, question.description, question.category].some(
-            (value) => value.toLowerCase().includes(term),
-          );
+          [
+            question.title,
+            question.description,
+            question.category,
+            ...question.tags,
+          ].some((value) => value.toLowerCase().includes(term));
         return (
           matchesSearch &&
           (category === "all" || question.category === category) &&
@@ -60,7 +63,7 @@ export function QuestionLibrary({
       .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
   }, [category, difficulty, questions, search, status]);
   const hasFilters =
-    search !== "" ||
+    search.trim() !== "" ||
     category !== "all" ||
     status !== "all" ||
     difficulty !== "all";
@@ -212,13 +215,17 @@ export function QuestionLibrary({
             </div>
             <h3 className="mt-4 font-semibold">
               {questions.length
-                ? "No questions match your search"
+                ? search.trim()
+                  ? "No questions found for that search"
+                  : "No questions match these filters"
                 : "Your practice list starts here"}
             </h3>
             <p className="mt-1 max-w-xs text-sm leading-6 text-muted-foreground">
               {questions.length
-                ? "Try a different keyword or clear your filters to see more."
-                : "Add a question you want to work through, then track your progress here."}
+                ? search.trim()
+                  ? `No title, note, category, or tag contains “${search.trim()}”. Clear your search and filters to see your full list.`
+                  : "There are questions in your library, but none fit the selected category, status, and difficulty. Clear filters to see them all."
+                : "Add your first question, then use notes and tags to keep attempts, reminders, and revision topics organized."}
             </p>
             <Button
               className="mt-4"
@@ -228,7 +235,7 @@ export function QuestionLibrary({
                 questions.length ? resetFilters() : setAddOpen(true)
               }
             >
-              {questions.length ? "Clear filters" : "Add your first question"}
+              {questions.length ? "Clear search and filters" : "Add your first question"}
             </Button>
           </CardContent>
         </Card>

@@ -20,6 +20,7 @@ export interface Question {
   difficulty: Difficulty;
   status: QuestionStatus;
   description: string;
+  tags: string[];
   createdAt: string;
   updatedAt: string;
 }
