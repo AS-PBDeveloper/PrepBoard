@@ -13,6 +13,9 @@ import { useQuestions } from "@/hooks/useQuestions";
 import type { QuestionDraft, QuestionStatus, View } from "@/types/question";
 
 const PROFILE_KEY = "prepboard.profile.v1";
+const THEME_KEY = "prepboard.theme.v1";
+
+type Theme = "light" | "dark";
 
 function loadName() {
   try {
@@ -22,13 +25,35 @@ function loadName() {
   }
 }
 
+function loadTheme(): Theme {
+  try {
+    return window.localStorage.getItem(THEME_KEY) === "dark" ? "dark" : "light";
+  } catch {
+    return "light";
+  }
+}
+
 export default function App() {
   const tracker = useQuestions();
   const [view, setView] = useState<View>("dashboard");
   const [newOpen, setNewOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [name, setName] = useState(loadName);
+  const [theme, setTheme] = useState<Theme>(loadTheme);
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    document.querySelector('meta[name="theme-color"]')?.setAttribute(
+      "content",
+      theme === "dark" ? "#171d1a" : "#f7f8f7",
+    );
+    try {
+      window.localStorage.setItem(THEME_KEY, theme);
+    } catch {
+      // The theme still applies for this session when storage is unavailable.
+    }
+  }, [theme]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setLoading(false), 350);
@@ -81,6 +106,8 @@ export default function App() {
           <Header
             view={view}
             name={name}
+            theme={theme}
+            onThemeChange={setTheme}
             onMenuClick={() => setMobileOpen(true)}
             onNewQuestion={() => setNewOpen(true)}
           />
@@ -120,6 +147,8 @@ export default function App() {
                 name={name}
                 onNameChange={updateName}
                 onRestore={tracker.restoreSamples}
+                theme={theme}
+                onThemeChange={setTheme}
               />
             )}
           </main>
@@ -129,7 +158,7 @@ export default function App() {
           onOpenChange={setNewOpen}
           onSave={addQuestion}
         />
-        <Toaster position="bottom-right" closeButton richColors theme="light" />
+        <Toaster position="bottom-right" closeButton richColors theme={theme} />
       </div>
     </TooltipProvider>
   );

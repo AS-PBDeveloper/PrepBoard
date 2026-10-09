@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import {
   CheckCheck,
+  Moon,
   RotateCcw,
   Save,
   ShieldCheck,
+  Sun,
   UserRound,
 } from "lucide-react";
 import { toast } from "sonner";
@@ -32,10 +34,14 @@ export function SettingsPage({
   name,
   onNameChange,
   onRestore,
+  theme,
+  onThemeChange,
 }: {
   name: string;
   onNameChange: (value: string) => void;
   onRestore: () => void;
+  theme: "light" | "dark";
+  onThemeChange: (theme: "light" | "dark") => void;
 }) {
   const [draftName, setDraftName] = useState(name);
   const [confirmRestore, setConfirmRestore] = useState(false);
@@ -98,6 +104,43 @@ export function SettingsPage({
       </Card>
       <Card>
         <CardHeader className="flex-row items-center gap-3 space-y-0">
+          <div className="flex size-9 items-center justify-center rounded-xl bg-accent text-primary">
+            {theme === "light" ? (
+              <Sun className="size-4.5" />
+            ) : (
+              <Moon className="size-4.5" />
+            )}
+          </div>
+          <div>
+            <CardTitle className="text-base">Appearance</CardTitle>
+            <CardDescription className="mt-1">
+              Choose the theme for your workspace.
+            </CardDescription>
+          </div>
+        </CardHeader>
+        <CardContent className="flex gap-2">
+          <Button
+            variant={theme === "light" ? "default" : "outline"}
+            size="sm"
+            aria-pressed={theme === "light"}
+            onClick={() => onThemeChange("light")}
+          >
+            <Sun className="size-3.5" />
+            Light
+          </Button>
+          <Button
+            variant={theme === "dark" ? "default" : "outline"}
+            size="sm"
+            aria-pressed={theme === "dark"}
+            onClick={() => onThemeChange("dark")}
+          >
+            <Moon className="size-3.5" />
+            Dark
+          </Button>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader className="flex-row items-center gap-3 space-y-0">
           <div className="flex size-9 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700">
             <ShieldCheck className="size-4.5" />
           </div>
@@ -126,7 +169,7 @@ export function SettingsPage({
           </div>
         </CardContent>
       </Card>
-      <Card className="border-[#f0e8e3]">
+      <Card>
         <CardHeader>
           <CardTitle className="text-base">Restore sample questions</CardTitle>
           <CardDescription>

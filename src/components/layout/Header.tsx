@@ -1,4 +1,4 @@
-import { Bell, Menu, Plus, Sparkles } from "lucide-react";
+import { Bell, Menu, Moon, Plus, Sparkles, Sun } from "lucide-react";
 import { toast } from "sonner";
 import { AppBrand } from "@/components/layout/AppSidebar";
 import { Button } from "@/components/ui/button";
@@ -19,11 +19,15 @@ const pageInfo: Record<View, { eyebrow: string; title: string }> = {
 export function Header({
   view,
   name,
+  theme,
+  onThemeChange,
   onMenuClick,
   onNewQuestion,
 }: {
   view: View;
   name: string;
+  theme: "light" | "dark";
+  onThemeChange: (theme: "light" | "dark") => void;
   onMenuClick: () => void;
   onNewQuestion: () => void;
 }) {
@@ -33,7 +37,7 @@ export function Header({
     day: "numeric",
   });
   return (
-    <header className="sticky top-0 z-20 flex h-16.5 items-center justify-between border-b border-border bg-[#f7f8f7]/90 px-4 backdrop-blur-xl sm:px-7 lg:px-10">
+    <header className="sticky top-0 z-20 flex h-16.5 items-center justify-between border-b border-border bg-background/90 px-4 backdrop-blur-xl sm:px-7 lg:px-10">
       <div className="flex items-center gap-3">
         <button
           type="button"
@@ -65,6 +69,27 @@ export function Header({
             <Button
               variant="ghost"
               size="icon"
+              className="size-9"
+              aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+              aria-pressed={theme === "dark"}
+              onClick={() => onThemeChange(theme === "light" ? "dark" : "light")}
+            >
+              {theme === "light" ? (
+                <Moon className="size-4.25" />
+              ) : (
+                <Sun className="size-4.25" />
+              )}
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            Switch to {theme === "light" ? "dark" : "light"} mode
+          </TooltipContent>
+        </Tooltip>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
               className="relative size-9"
               aria-label="View notifications"
               onClick={() =>
@@ -75,7 +100,7 @@ export function Header({
               }
             >
               <Bell className="size-4.25" />
-              <span className="absolute right-2 top-2 size-1.5 rounded-full bg-primary ring-2 ring-[#f7f8f7]" />
+              <span className="absolute right-2 top-2 size-1.5 rounded-full bg-primary ring-2 ring-background" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>Notifications</TooltipContent>
@@ -85,7 +110,7 @@ export function Header({
           <div className="hidden max-w-32.5 truncate text-xs font-medium sm:block">
             {name}
           </div>
-          <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#e7efe9] text-[10px] font-bold text-[#4e715d]">
+          <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-primary">
             {name
               .split(/\s+/)
               .map((part) => part[0])

@@ -77,7 +77,7 @@ function Navigation({
               "group flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-medium transition-colors",
               view === value
                 ? "bg-accent text-primary"
-                : "text-[#626e66] hover:bg-muted hover:text-foreground",
+                : "text-muted-foreground hover:bg-muted hover:text-foreground",
             )}
             aria-current={view === value ? "page" : undefined}
           >
@@ -106,7 +106,7 @@ function Navigation({
             "group flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-medium transition-colors",
             view === "settings"
               ? "bg-accent text-primary"
-              : "text-[#626e66] hover:bg-muted hover:text-foreground",
+              : "text-muted-foreground hover:bg-muted hover:text-foreground",
           )}
         >
           <Settings2
@@ -120,8 +120,8 @@ function Navigation({
       <div className="px-5 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground/80">
         Make it count
       </div>
-      <div className="mx-3 mt-3 rounded-xl border border-[#e7ede8] bg-[#f7faf7] p-3.5">
-        <div className="flex size-7 items-center justify-center rounded-lg bg-white text-primary shadow-sm">
+      <div className="mx-3 mt-3 rounded-xl border border-border bg-muted/60 p-3.5">
+        <div className="flex size-7 items-center justify-center rounded-lg bg-card text-primary shadow-sm">
           <Target className="size-3.5" />
         </div>
         <p className="mt-3 text-xs font-semibold">Your next rep is waiting.</p>
@@ -131,7 +131,7 @@ function Navigation({
         <Button
           variant="outline"
           size="sm"
-          className="mt-3 h-8 w-full justify-between border-[#e4eae4] bg-white text-[11px]"
+          className="mt-3 h-8 w-full justify-between text-[11px]"
           onClick={onNewQuestion}
         >
           Add a question
@@ -183,7 +183,7 @@ export function AppSidebar({
         />
         <div className="border-t border-border/80 px-4 py-4">
           <div className="flex items-center gap-3">
-            <div className="flex size-9 items-center justify-center rounded-full bg-[#e7efe9] text-xs font-semibold text-[#4e715d]">
+            <div className="flex size-9 items-center justify-center rounded-full bg-accent text-xs font-semibold text-primary">
               {name
                 .split(/\s+/)
                 .map((part) => part[0])

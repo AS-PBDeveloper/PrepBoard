@@ -195,9 +195,9 @@ export function Dashboard({
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-[#f4f7f5] shadow-none">
+          <Card className="bg-muted/60 shadow-none">
             <CardContent className="p-5">
-              <div className="flex size-8 items-center justify-center rounded-lg bg-white text-primary shadow-sm">
+              <div className="flex size-8 items-center justify-center rounded-lg bg-card text-primary shadow-sm">
                 <BookOpen className="size-4" />
               </div>
               <p className="mt-3 text-xs font-semibold">

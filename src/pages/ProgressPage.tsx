@@ -156,9 +156,9 @@ export function ProgressPage({ questions, stats }: Props) {
                 </p>
               </CardContent>
             </Card>
-            <Card className="bg-[#f3f7f3]">
+            <Card className="bg-muted/60">
               <CardHeader>
-                <div className="flex size-8 items-center justify-center rounded-lg bg-white text-primary shadow-sm">
+                <div className="flex size-8 items-center justify-center rounded-lg bg-card text-primary shadow-sm">
                   <Goal className="size-4" />
                 </div>
                 <CardTitle className="mt-3 text-base">Weekly goal</CardTitle>
@@ -178,8 +178,8 @@ export function ProgressPage({ questions, stats }: Props) {
                     {weeklyPercent}% there
                   </span>
                 </div>
-                <Progress value={weeklyPercent} className="mt-3 h-2 bg-white" />
-                <div className="mt-5 flex items-start gap-2.5 rounded-xl border border-white bg-white/70 p-3.5">
+                <Progress value={weeklyPercent} className="mt-3 h-2 bg-card" />
+                <div className="mt-5 flex items-start gap-2.5 rounded-xl border border-border bg-card/70 p-3.5">
                   <Sparkles className="mt-0.5 size-4 shrink-0 text-primary" />
                   <p className="text-xs leading-5 text-muted-foreground">
                     A steady routine is more useful than a perfect streak. Each

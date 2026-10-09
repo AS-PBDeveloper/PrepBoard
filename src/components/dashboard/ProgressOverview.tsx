@@ -73,12 +73,12 @@ export function ProgressOverview({
             <div
               className="relative flex size-18.5 shrink-0 items-center justify-center rounded-full"
               style={{
-                background: `conic-gradient(#18765c ${progress * 3.6}deg, #eef2ef ${progress * 3.6}deg)`,
+                background: `conic-gradient(var(--primary) ${progress * 3.6}deg, var(--secondary) ${progress * 3.6}deg)`,
               }}
               role="img"
               aria-label={`${progress}% overall completion`}
             >
-              <div className="flex size-14.5 items-center justify-center rounded-full bg-white">
+              <div className="flex size-14.5 items-center justify-center rounded-full bg-card">
                 <span className="font-mono text-[17px] font-semibold tracking-tight">
                   {progress}%
                 </span>
@@ -129,12 +129,12 @@ export function ProgressOverview({
           </div>
         </CardContent>
       </Card>
-      <Card className="relative overflow-hidden bg-[#f3f7f3]">
+      <Card className="relative overflow-hidden bg-muted/60">
         <div className="pointer-events-none absolute -right-10 -top-12 size-44 rounded-full border border-primary/5" />
         <div className="pointer-events-none absolute -right-1 -top-3 size-28 rounded-full border border-primary/10" />
         <CardHeader className="relative pb-3">
           <div className="flex items-center gap-2">
-            <div className="flex size-8 items-center justify-center rounded-lg bg-white text-primary shadow-sm">
+            <div className="flex size-8 items-center justify-center rounded-lg bg-card text-primary shadow-sm">
               <Target className="size-4" />
             </div>
             <CardTitle className="text-[15px]">This week</CardTitle>
@@ -153,13 +153,13 @@ export function ProgressOverview({
                 of {weeklyGoal} questions
               </span>
             </div>
-            <div className="mb-1 flex items-center gap-1 rounded-full bg-white px-2.5 py-1 text-[11px] font-medium text-primary shadow-sm">
+            <div className="mb-1 flex items-center gap-1 rounded-full bg-card px-2.5 py-1 text-[11px] font-medium text-primary shadow-sm">
               <Check className="size-3" />
               {goalValue}% of goal
             </div>
           </div>
-          <Progress value={goalValue} className="h-2 bg-white" />
-          <div className="rounded-xl border border-white/90 bg-white/75 p-3.5">
+          <Progress value={goalValue} className="h-2 bg-card" />
+          <div className="rounded-xl border border-border bg-card/75 p-3.5">
             <div className="flex items-start gap-2.5">
               <div className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full bg-accent text-primary">
                 <Check className="size-3.5" />

@@ -87,7 +87,7 @@ export function QuestionLibrary({
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search questions or notes…"
                   aria-label="Search questions"
-                  className="h-10 border-border/80 bg-[#fcfdfc] pl-9"
+                  className="h-10 border-border/80 bg-background pl-9"
                 />
                 {search && (
                   <button

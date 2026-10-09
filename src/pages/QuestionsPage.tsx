@@ -43,7 +43,7 @@ export function QuestionsPage({
           Add question
         </Button>
       </div>
-      <div className="flex flex-wrap items-center gap-2 rounded-xl border border-border/80 bg-white/70 px-4 py-3 text-xs text-muted-foreground">
+      <div className="flex flex-wrap items-center gap-2 rounded-xl border border-border/80 bg-card/70 px-4 py-3 text-xs text-muted-foreground">
         <Sparkles className="size-3.5 text-primary" />
         <span>
           <span className="font-semibold text-foreground">
