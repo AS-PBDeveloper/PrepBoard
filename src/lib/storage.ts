@@ -145,6 +145,102 @@ export function createSeedQuestions(): Question[] {
         "Model channels, retries, and delivery status in a small system.",
       updatedDaysAgo: 11,
     },
+    {
+      title: "Best Time to Buy and Sell Stock",
+      category: "DSA",
+      difficulty: "Easy",
+      status: "Pending",
+      description: "Find the maximum profit from one buy and one sell.",
+      updatedDaysAgo: 2,
+    },
+    {
+      title: "Group Anagrams",
+      category: "DSA",
+      difficulty: "Medium",
+      status: "Pending",
+      description: "Group words that contain the same letters.",
+      updatedDaysAgo: 3,
+    },
+    {
+      title: "Number of Islands",
+      category: "DSA",
+      difficulty: "Medium",
+      status: "Pending",
+      description: "Count connected land regions in a grid.",
+      updatedDaysAgo: 4,
+    },
+    {
+      title: "Implement a Trie",
+      category: "DSA",
+      difficulty: "Medium",
+      status: "Pending",
+      description: "Support efficient word insertion, search, and prefix lookup.",
+      updatedDaysAgo: 5,
+    },
+    {
+      title: "Explain the event loop",
+      category: "Technical",
+      difficulty: "Medium",
+      status: "Pending",
+      description: "Describe the call stack, task queue, and microtasks.",
+      updatedDaysAgo: 2,
+    },
+    {
+      title: "How does a browser render a page?",
+      category: "Technical",
+      difficulty: "Medium",
+      status: "Pending",
+      description: "Explain DOM/CSSOM construction, layout, paint, and compositing.",
+      updatedDaysAgo: 3,
+    },
+    {
+      title: "Cherry-pick a commit",
+      category: "Git",
+      difficulty: "Easy",
+      status: "Pending",
+      description: "Explain when and how to apply a commit to another branch.",
+      updatedDaysAgo: 2,
+    },
+    {
+      title: "Describe a challenging project",
+      category: "Interview",
+      difficulty: "Medium",
+      status: "Pending",
+      description: "Prepare a concise story about your role, trade-offs, and impact.",
+      updatedDaysAgo: 2,
+    },
+    {
+      title: "Tell me about a mistake you learned from",
+      category: "Interview",
+      difficulty: "Medium",
+      status: "Pending",
+      description: "Choose a real example and focus on what changed afterward.",
+      updatedDaysAgo: 4,
+    },
+    {
+      title: "Build a searchable data table",
+      category: "Machine Coding",
+      difficulty: "Medium",
+      status: "Pending",
+      description: "Add sorting, filtering, pagination, and accessible controls.",
+      updatedDaysAgo: 2,
+    },
+    {
+      title: "Build a multi-step form",
+      category: "Machine Coding",
+      difficulty: "Medium",
+      status: "Pending",
+      description: "Handle validation, navigation, and preserving form progress.",
+      updatedDaysAgo: 3,
+    },
+    {
+      title: "Build a file explorer",
+      category: "Machine Coding",
+      difficulty: "Hard",
+      status: "Pending",
+      description: "Support nested folders, selection, and expand/collapse actions.",
+      updatedDaysAgo: 5,
+    },
   ];
   return items.map(({ updatedDaysAgo, ...question }, index) => ({
     ...question,
@@ -166,10 +262,21 @@ export function readQuestions(): Question[] {
   try {
     const parsed: unknown = JSON.parse(raw);
     if (Array.isArray(parsed) && parsed.every(isQuestion)) {
-      return parsed.map((question) => ({
+      const savedQuestions = parsed.map((question) => ({
         ...question,
         tags: question.tags ?? [],
       }));
+      const hasOriginalSamples = savedQuestions.some((question) =>
+        /^sample-(?:[1-9]|1[0-6])$/.test(question.id),
+      );
+      if (!hasOriginalSamples) return savedQuestions;
+
+      const savedIds = new Set(savedQuestions.map((question) => question.id));
+      const additionalSamples = createSeedQuestions().filter((question) => {
+        const sampleNumber = Number(question.id.slice("sample-".length));
+        return sampleNumber > 16 && !savedIds.has(question.id);
+      });
+      return [...savedQuestions, ...additionalSamples];
     }
     return createSeedQuestions();
   } catch {
